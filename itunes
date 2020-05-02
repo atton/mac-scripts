@@ -1,4 +1,5 @@
 #!/bin/zsh
+
 # original: http://hints.macworld.com/article.php?story=20011108211802830
 
 function showHelp() {
@@ -79,9 +80,9 @@ case $1 in
     't'      ) toggle ;;
     'n'      ) next ;;
     'p'      ) previous ;;
-    <0-100> ) volume $1 ;;
+    <0-100>  ) volume $1 ;;
     'q'      ) quit ;;
-    *       ) showHelp ;;
+     *       ) showHelp ;;
 esac
 
 # vim: set filetype=zsh :
