@@ -1,0 +1,10 @@
+#!/bin/zsh
+
+if [ $# -ne 1 ]; then echo 'Please specify PID'; exit 1; fi
+
+echo "Target command: $(ps | grep -e "^[[:space:]]*$1")"
+cmd_str="peep $1 >& /dev/null && terminal-notifier -sound Glass -message 'Peeping process(PID: $1) was finished'"
+echo $cmd_str
+eval $cmd_str
+
+# vim: set filetype=zsh :
