@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/zsh -x
 
 echo 'delete from ZTEXTREPLACEMENTENTRY;' | sqlite3 ~/Library/KeyboardServices/TextReplacements.db
 defaults delete -g NSUserDictionaryReplacementItems
