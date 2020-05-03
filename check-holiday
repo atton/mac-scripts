@@ -1,0 +1,5 @@
+#!/usr/bin/env ruby
+
+require 'holiday_jp'
+
+puts('Today is holiday') if HolidayJp.holiday?(Date.today)
