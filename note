@@ -1,0 +1,21 @@
+#!/bin/zsh
+
+serial_number=`ls -1 | egrep '[0-9]+_.{8}.txt' | wc -l`
+if [ $# -ge 1 -a $1 -le 0 ] >& /dev/null; then
+    serial=`printf '%02d' $(($serial_number $1))`
+    $EDITOR ${serial}_????????.txt
+    exit $?
+fi
+
+today=`date +%Y%m%d`
+ls -1 | egrep "[0-9]+_${today}.txt" >& /dev/null
+if [ $? -eq 0 ]; then
+    $EDITOR *_${today}.txt
+else
+    serial=`printf '%02d' $(($serial_number + 1))`
+    name=${serial}_${today}.txt
+    if [ -x .new-note.sh ]; then ./.new-note.sh > $name; fi
+    $EDITOR $name
+fi
+
+# vim: set filetype=zsh :
