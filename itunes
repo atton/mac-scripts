@@ -11,6 +11,7 @@ function showHelp() {
     echo ' itunes t   = Toggle play/pause. If iTunes stopped, start it.';
     echo ' itunes n   = Go to the next track.';
     echo ' itunes p   = Go to the previous track.';
+    echo ' itunes q   = Quit iTunes.';
     echo ' itunes *   = show help informations.';
 }
 
