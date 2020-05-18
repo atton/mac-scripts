@@ -4,7 +4,7 @@ basepath=/tmp/note-calc-times
 mkdir -p $basepath
 
 filespath="$basepath/files"
-ls -1p $@ | grep -v / |& egrep -v '[^0-9]:' > $filespath
+ls -1p $@ | egrep -v '/$' |& egrep -v '[^0-9]:' > $filespath
 
 timeregexp='^[0-9/]{10} [0-9:]{8}$'
 timespath="$basepath/times"
