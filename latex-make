@@ -1,0 +1,7 @@
+#!/bin/zsh
+
+if ! which docker >& /dev/null; then echo 'Docker not found'; exit 1; fi
+if [ ! -f Makefile ]; then echo 'Makefile not found'; exit 1; fi
+docker run -v $(pwd):/workdir --rm atton/latex-make
+
+# vim: set filetype=zsh :
