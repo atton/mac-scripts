@@ -1,0 +1,19 @@
+#!/bin/zsh
+
+if [ ! -d .git ]; then
+    echo '.git not found'
+    echo 'Please execute in git repository root'
+    exit 1
+fi
+stash_dir='/tmp/git-stash-hooks'
+hook_file='.git/hooks/pre-push'
+
+set -x
+
+rm -rf $stash_dir
+mkdir -p $stash_dir
+mv .git/hooks/* $stash_dir
+echo '#!/bin/sh' "\nexit 1" > $hook_file
+chmod 755 $hook_file
+
+# vim: set filetype=zsh :
