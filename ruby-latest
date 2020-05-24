@@ -1,0 +1,5 @@
+#!/bin/zsh
+
+ruby-build --definitions | egrep '^[0-9.]+$' | sort -V | tail -1
+
+# vim: set filetype=zsh :
