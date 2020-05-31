@@ -1,0 +1,13 @@
+#!/usr/bin/env python3
+
+import sys
+from gingerit.gingerit import GingerIt
+
+if len(sys.argv) != 2:
+  print('Please specify text like')
+  print("$ elaboration-by-ginger 'I am cat.'")
+  sys.exit(1)
+
+result = GingerIt().parse(sys.argv[1])
+print('in:  ' + result['text'])
+print('out: ' + result['result'])
