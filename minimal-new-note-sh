@@ -1,0 +1,9 @@
+#!/bin/zsh
+
+filename='.new-note.sh'
+if [ -f $filename ]; then echo '".new-note.sh" detected. abort.'; exit 1; fi
+
+echo "#!/bin/sh\ndate +'%Y/%m/%d(%a)'" > $filename
+chmod 755 $filename
+
+# vim: set filetype=zsh :
