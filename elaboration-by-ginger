@@ -11,3 +11,4 @@ if len(sys.argv) != 2:
 result = GingerIt().parse(sys.argv[1])
 print('in:  ' + result['text'])
 print('out: ' + result['result'])
+print('in == out: ' + str(result['text'] == result['result']))
