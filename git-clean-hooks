@@ -6,11 +6,11 @@ if [ ! -d .git ]; then
     exit 1
 fi
 stash_dir='/tmp/git-stash-hooks'
-
-set -x
+mv_command="mv .git/hooks/* $stash_dir"
 
 rm -rf $stash_dir
 mkdir -p $stash_dir
-mv .git/hooks/* $stash_dir
+echo $mv_command
+eval $mv_command
 
 # vim: set filetype=zsh :
