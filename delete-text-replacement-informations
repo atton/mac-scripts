@@ -1,6 +1,10 @@
-#!/bin/zsh -x
+#!/bin/zsh
 
+echo '---------- before ----------'
+defaults read -g NSUserDictionaryReplacementItems
 echo 'delete from ZTEXTREPLACEMENTENTRY;' | sqlite3 ~/Library/KeyboardServices/TextReplacements.db
 defaults delete -g NSUserDictionaryReplacementItems
+echo '---------- after ----------'
+defaults read -g NSUserDictionaryReplacementItems
 
 # vim: set filetype=zsh :
