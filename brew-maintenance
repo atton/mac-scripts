@@ -1,14 +1,10 @@
 #!/bin/zsh -l
 
-function run-command() {
-    echo "----- $1 -----"
-    eval $1
-    echo
-}
-
-run-command 'brew update'
-run-command 'brew outdated'
-run-command 'brew cask outdated'
-run-command 'brew doctor'
+set -ex
+which brew
+brew update
+brew outdated
+brew cask outdated
+brew doctor
 
 # vim: set filetype=zsh :
