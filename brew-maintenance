@@ -4,7 +4,6 @@ set -ex
 which brew
 brew update
 brew outdated
-brew cask outdated
 brew doctor
 
 # vim: set filetype=zsh :
