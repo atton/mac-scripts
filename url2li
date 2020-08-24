@@ -1,0 +1,6 @@
+#!/bin/zsh
+
+title=`title-from-url $@`
+if [ -n "$title" ]; then echo "<li><a href='${1}'>${title}</a></li>"; fi
+
+# vim: set filetype=zsh :
