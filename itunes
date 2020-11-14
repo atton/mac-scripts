@@ -36,6 +36,7 @@ function play() {
     echo 'Playing iTunes.';
     osascript -e "tell application \"iTunes\" to play $1";
     showTrackInfo;
+    showCurrentVolume;
 }
 
 function toggle() {
