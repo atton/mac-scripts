@@ -22,9 +22,10 @@ fi
 echo "detected time $size counts. listing..."; line
 cat $filespath | xargs egrep -Hn $timeregexp; line
 if [ $(($size % 2)) -eq 1 ]; then
-    echo "detected time $size counts, not-even. abort."
-    rm -rf $basepath
-    return 1
+    latest_time=$(tail -1 $timespath)
+    echo "detected time $size counts, not-even."
+    echo "ignore lastest time(${latest_time})."
+    line
 fi
 echo 'formatted time calculating...'; line
 
