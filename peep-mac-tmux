@@ -4,7 +4,7 @@ pane_count=$(tmux list-panes | wc -l)
 if [ $pane_count -ne 2 ]; then echo 'peep-mac-tmux function only works 2 panel. Exit.'; exit 1; fi
 
 target_parent_pid=$(tmux list-panes -F '#{pane_active} #{pane_pid}' | egrep '^0' | awk '{print $2}')
-target_pid=$(ps ux -o ppid -O start | grep $target_parent_pid | awk '{print $2}' | head -1)
+target_pid=$(ps -o ppid -O start | grep 'S+' | grep $target_parent_pid | awk '{print $2}')
 
 peep-mac $target_pid
 
