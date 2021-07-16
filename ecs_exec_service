@@ -1,0 +1,12 @@
+#!/bin/zsh
+
+# https://github.com/pahud/ecs-exec-cdk-demo
+
+CLUSTER=$1
+SERVICE=$2
+CONTAINER=$3
+TASK=$(aws ecs list-tasks --service-name $SERVICE --cluster $CLUSTER --query 'taskArns[0]' --output text)
+
+aws ecs execute-command --cluster $CLUSTER --task $TASK --container $CONTAINER --command '/bin/sh' --interactive
+
+# vim: set filetype=zsh :
