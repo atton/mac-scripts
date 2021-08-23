@@ -15,26 +15,26 @@ function showHelp() {
     echo ' itunes *   = show help informations.';
 }
 
-function getState()   { osascript -e 'tell application "iTunes" to player state as string' }
+function getState()   { osascript -e 'tell application "Music" to player state as string' }
 function showState()  { echo "iTunes is currently `getState`." }
 function showStatus() { showState; showCurrentVolume; showTrackInfo; }
 
 function showTrackInfo() {
     if [ `getState` != 'stopped' ]; then
-        local track=`osascript -e 'tell application "iTunes" to name of current track as string'`;
-        local album=`osascript -e 'tell application "iTunes" to album of current track as string'`;
+        local track=`osascript -e 'tell application "Music" to name of current track as string'`;
+        local album=`osascript -e 'tell application "Music" to album of current track as string'`;
         echo "Current track: $track - ($album)";
     fi
 }
 
 function showCurrentVolume() {
-    local vol=`osascript -e 'tell application "iTunes" to sound volume as integer'`;
+    local vol=`osascript -e 'tell application "Music" to sound volume as integer'`;
     echo "Current volume level: $vol%";
 }
 
 function play() {
     echo 'Playing iTunes.';
-    osascript -e "tell application \"iTunes\" to play $1";
+    osascript -e "tell application \"Music\" to play $1";
     showTrackInfo;
     showCurrentVolume;
 }
@@ -43,7 +43,7 @@ function toggle() {
     local state=`getState`
     if [ $state = 'playing' ]; then
         echo 'Pausing iTunes.';
-        osascript -e 'tell application "iTunes" to pause';
+        osascript -e 'tell application "Music" to pause';
     elif [ $state = 'paused' ]; then
         play;
     elif [ $state = 'stopped' ]; then
@@ -54,24 +54,24 @@ function toggle() {
 
 function next() {
     echo 'Going to next track.' ;
-    osascript -e 'tell application "iTunes" to next track';
+    osascript -e 'tell application "Music" to next track';
     showTrackInfo;
 }
 
 function previous() {
     echo 'Going to previous track.';
-    osascript -e 'tell application "iTunes" to previous track';
+    osascript -e 'tell application "Music" to previous track';
     showTrackInfo;
 }
 
 function volume() {
     echo "Changing iTunes volume level: ${1}%";
-    osascript -e "tell application \"iTunes\" to set sound volume to ${1}";
+    osascript -e "tell application \"Music\" to set sound volume to ${1}";
 }
 
 function quit() {
     echo 'Quitting iTunes.';
-    osascript -e 'tell application "iTunes" to quit';
+    osascript -e 'tell application "Music" to quit';
 }
 
 # itunes main code
