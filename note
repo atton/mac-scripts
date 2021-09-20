@@ -15,7 +15,6 @@ else
     serial=`printf '%02d' $(($serial_number + 1))`
     name=${serial}_${today}.txt
     if [ -x .new-note.sh ]; then ./.new-note.sh > $name; fi
-    if [ $? -ne 0 ]; then cat $name; EDITOR=rm; fi
     $EDITOR $name
 fi
 
