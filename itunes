@@ -8,7 +8,7 @@ function showHelp() {
     echo ' itunes #   = Set volume level to #(0-100) percent';
     echo ' itunes bgm = Play "BGM : for Work" playlist.';
     echo ' itunes fav = Play "Song : Recently Favorited" playlist.';
-    echo ' itunes t   = Toggle play/pause. If iTunes stopped, start it.';
+    echo ' itunes t   = Toggle play/pause.';
     echo ' itunes n   = Go to the next track.';
     echo ' itunes p   = Go to the previous track.';
     echo ' itunes q   = Quit iTunes.';
@@ -47,8 +47,7 @@ function toggle() {
     elif [ $state = 'paused' ]; then
         play;
     elif [ $state = 'stopped' ]; then
-        echo 'iTunes currently stopped. starting iTunes.'
-        play;
+        echo 'iTunes currently stopped.'
     fi
 }
 
@@ -77,8 +76,8 @@ function quit() {
 # itunes main code
 if [ $# = 0 ]; then showStatus; return; fi
 case $1 in
-    'bgm'    ) play 'playlist "BGM : for Work"' ;;
-    'fav'    ) play 'playlist "Song : Recently Favorited"' ;;
+    'bgm'    ) play 'playlist named "BGM : for Work"' ;;
+    'fav'    ) play 'playlist named "Song : Recently Favorited"' ;;
     't'      ) toggle ;;
     'n'      ) next ;;
     'p'      ) previous ;;
